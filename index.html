@@ -7,40 +7,19 @@
 </head>
 <body>
 
-
-
     <div id="main">
-
-    <nav>
-        <ul>
-            <li>{{ navbarItems.about}}</li>
-            <li>{{ navbarItems.home}}</li>
-            <li>{{ navbarItems.contact}}</li>
-        </ul>
-    </nav>
-
     <span v-on:mouseover="emphasize" v-on:mouseout="deemphasize">
         Hello, World Mousevent!
     </span>
-
-    <div>
-        <h1>Hello, <span>{{greeting || 'World'}}!</h1>
-        </div>
-        
-        <ul v-if="people.length > 0">
-            <li v-for="item in people"> {{item.name}} is {{item.age}} years old</li>
+        <ul v-if="images.length > 0" id="results-container">
+            <li v-for="image in images" :key="image.id"> 
+                <div class="img-card">
+                    <img v-bind:src="image.url" alt="image.description">
+            <p> {{image.username}} {{image.title}} {{image.description}}</p>
+                </div>
+            </li>
         </ul>
-        
-        <h1 v-bind:class="headingClassName">{{ heading }}</h1>
-        <p>{{ 'Hello Worlds! '}}</p>
-        <p>2 + 2 = {{ 2 + 2 }} </p>
-        <p>{{ randomNum() }}</p>
-        <div>{{ firstName }} {{ lastName }}</div>
-        
-        <!-- v-model festlegen welche Variable angezeigt werden soll -->
-        <input type="text" v-model="greeting">
     </div>
-
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>
 </body>
 </html>
