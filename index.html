@@ -8,14 +8,12 @@
 <body>
 
     <div id="main">
-    <span v-on:mouseover="emphasize" v-on:mouseout="deemphasize">
-        Hello, World Mousevent!
-    </span>
-        <ul v-if="images.length > 0" id="results-container">
+        <h1 id="page-title">HELLO, I 💘 IMAGES!</h1>
+        <ul v-if="images.length > 0" class="wrapper-grid">
             <li v-for="image in images" :key="image.id"> 
                 <div class="img-card">
                     <img v-bind:src="image.url" alt="image.description">
-            <p> {{image.username}} {{image.title}} {{image.description}}</p>
+            <p class="img-title">{{image.title}}</p>
                 </div>
             </li>
         </ul>

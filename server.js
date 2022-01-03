@@ -9,7 +9,6 @@ app.use(express.json());
 
 app.get('/get-imageboard-data', (req, res) => {
     getImages().then(({ rows }) => {
-        // console.log("Rows from get Images", rows);
         res.json(rows);
     });
 });
