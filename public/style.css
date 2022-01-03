@@ -1,0 +1,19 @@
+body {
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    height: 70px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    /* align-items: flex-end; */
+}
+
+nav li {
+    width: 100px;
+}
