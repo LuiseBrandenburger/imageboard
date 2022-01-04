@@ -5,6 +5,10 @@ Vue.createApp({
     data() {
         return {
             images: [],
+            title: "",
+            description: "",
+            username: "",
+            file: null,
         };
     },
     mounted() {
@@ -16,13 +20,8 @@ Vue.createApp({
             });
     },
     methods: {
-        emphasize: function (e) {
-            e.target.style.textDecoration = "underline";
-            // this.count = this.count ? this.count + 1 : 1;
-        },
-        deemphasize: function (e) {
-            e.target.style.textDecoration = "";
-            // this.logCount();
-        },
+        clickHandler: function(e) {
+            console.log("this in function", this);
+        }
     },
 }).mount("#main");
