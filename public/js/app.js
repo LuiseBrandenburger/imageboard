@@ -35,9 +35,15 @@ Vue.createApp({
                 body: fd
             }).then(res => res.json())
                 .then((result) => {
-                    console.log("result", result);
+                    console.log("result", result[0]);
+                    // push the result into the array
+                    console.log("images before unshift", this.images);
+                    this.images.unshift(result[0]);
+                    console.log("images after unshift", this.images);
                 })
                 .catch(console.log());
+
+            // set Values empty
             this.title = "";
             this.description = "";
             this.username = "";

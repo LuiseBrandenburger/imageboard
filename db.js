@@ -11,14 +11,15 @@ const db = spicedPg(
 
 
 module.exports.getImages = () => {
-    const q = `SELECT * FROM images`;
+    const q = `SELECT * FROM images
+    ORDER by id desc`;
     return db.query(q);
 };
 
 module.exports.addImage = (description, username, title, url) => {
     const q = `INSERT INTO images (description, username, title, url)
     VALUES ($1, $2, $3, $4)
-    RETURNING description, username, title, url`;
+    RETURNING description, username, title, url, id, created_at`;
 
     const params = [description, username, title, url];
     return db.query(q, params);

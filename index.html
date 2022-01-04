@@ -26,7 +26,7 @@
             <button @click.prevent="clickHandler" >Submit</button>
         </form>
 
-        <ul v-if="images.length > 0" class="wrapper-grid">
+        <ul class="wrapper-grid">
             <li v-for="image in images" :key="image.id"> 
                 <div class="img-card">
                     <img :src="image.url" :alt="image.description">

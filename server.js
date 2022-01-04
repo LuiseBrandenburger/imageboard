@@ -13,22 +13,30 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
     // res.send('Upload Successfull');
     // add file URL to db
 
-    const fileName = req.file.filename;
-    const urlToSaveInDB = `https://s3.amazonaws.com/spicedling/${fileName}`; 
+    if (req.file) {
+        const fileName = req.file.filename;
+        const urlToSaveInDB = `https://s3.amazonaws.com/spicedling/${fileName}`;
+    
+        addImage(
+            req.body.description,
+            req.body.username,
+            req.body.title,
+            urlToSaveInDB
+        )
+            .then(({ rows }) => {
+                console.log("image successfully saved in db");
+                console.log("rows", rows);
+                res.json(rows);
+            })
+            .catch((err) => {
+                console.log("error adding img to db", err);
+                res.sendStatus(500);
+            });
+    } else {
+        // TODO: what do we do if success is false??
+        res.json({ success: false });
+    }
 
-    addImage(
-        req.body.description,
-        req.body.username,
-        req.body.title,
-        urlToSaveInDB
-    ).then(({ rows }) => {
-        console.log("image successfully saved in db");
-        console.log("rows", rows);
-        res.json(rows);
-    }).catch((err)=> {
-        console.log("error adding img to db", err);
-        res.sendStatus(500);
-    });
 });
 
 app.get("/get-imageboard-data", (req, res) => {
