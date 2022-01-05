@@ -5,44 +5,58 @@
 }
 
 :root {
-    --bg-color: rgb(189, 189, 189);
+    --bg-color: rgb(65, 65, 65);
+    --main-color: rgba(31, 29, 28, 0.967);
     --gradient: linear-gradient(#ffd166c7, transparent),
         linear-gradient(to top left, #66ffabc9, transparent),
         linear-gradient(to top right, #ff6666bf, transparent);
-    /* --main-color: rgb(189, 189, 189); */
+    --main-font: 'Source Code Pro', monospace;
 }
-
 
 body {
     display: flex;
     flex-direction: column;
     background-color: var(--bg-color);
-    font-family: 'Source Code Pro', monospace;
+    font-family: var(--main-font);
 }
 
 #page-title {
     margin: 20px;
     font-size: 2rem;
     font-weight: bold;
+    color: rgb(255, 255, 255);
 }
 
 form {
     display: flex;
-    flex-direction: column;
-    width: 500px;
-    background: var(--gradient);
+    width: 100%;
+    border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #ffd166c7, #ff6666bf, #66ffabc9) 1;
     align-self: center;
 }
 
 button {
-    width: 100px;
     margin: 10px 20px;
+    font-family: var(--main-font);
+    cursor: pointer;
+    align-self: center;
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 3px;
+}
 
+button:hover {
+    background-color: var(--main-color);
 }
 
 input {
     width: 200px;
     margin: 10px 20px;
+    padding: 2px;
+    font-family: var(--main-font);
+
 }
 
 .wrapper-grid {
@@ -56,7 +70,7 @@ input {
 
 .img-card {
     width: 400px;
-    border: 5px solid #000000;
+    border: 5px solid var(--main-color);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -68,7 +82,9 @@ input {
 }
 
 .img-card:hover {
-    border: 5px solid violet;
+    border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #ffd166c7, #ff6666bf, #66ffabc9) 1;
 }
 
 img {
@@ -87,17 +103,18 @@ footer {
     height: 30px;
 }
 
-
 .dots-3 {
-  width:50px;
-  height:24px;
-  background: 
+    margin-top: 15px;
+    margin-left: 20px;
+    width:50px;
+    height:24px;
+    background: 
     radial-gradient(circle closest-side,currentColor 90%,#0000) 0%   50%,
     radial-gradient(circle closest-side,currentColor 90%,#0000) 50%  50%,
     radial-gradient(circle closest-side,currentColor 90%,#0000) 100% 50%;
-  background-size:calc(100%/3) 12px;
-  background-repeat: no-repeat;
-  animation:d3 1s infinite linear;
+    background-size:calc(100%/3) 12px;
+    background-repeat: no-repeat;
+    animation:d3 1s infinite linear;
 }
 @keyframes d3 {
     20%{background-position:0%   0%, 50%  50%,100%  50%}
@@ -149,21 +166,10 @@ footer {
 .text-container {
     width: 90%;
     align-self: center;
-    /* border: 3px solid red; */
 }
 
 .text-container h3 {
     margin-bottom: 10px;
-}
-
-#modal-btn {
-    align-self: center;
-    width: 100px;
-    height: 30px;
-    font-family: 'Source Code Pro', monospace;
-    background-color: var(--bg-color);
-    border: none;
-    border-radius: 3px;
 }
 
 #modal-btn:hover {

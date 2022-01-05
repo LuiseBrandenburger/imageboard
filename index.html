@@ -6,7 +6,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;600;900&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Rock+3D&display=swap" rel="stylesheet">  
-<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Hammersmith+One&family=Press+Start+2P&family=Prompt&family=Righteous&family=Rock+3D&family=Source+Code+Pro&family=Space+Mono&family=Staatliches&display=swap" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
 
     <title></title>
@@ -14,18 +14,19 @@
 <body>
 
     <h1 id="page-title">HELLO, I 💘 IMAGES!</h1>
-
+    
     <div id="main">
         <!-- ************************* VUE START ********************** -->
         
         <display-img-modal v-if="imgClicked" :id="imgClicked" @close="closeModal"></display-img-modal>
-
+        
         <form class="input-form">
             <input v-model="title" type="text" name="title" id="" placeholder="title">
             <input v-model="username" type="text" name="username" id="" placeholder="username">
             <input v-model="description" type="text" name="description" id="" placeholder="description">
-            <input @change="fileSelectHandler" type="file" name="file" id="" accept="image/*">
-            <button @click.prevent="clickHandler" >Submit</button>
+            <label for="file"></label>
+            <input @change="fileSelectHandler" type="file" name="file" id="file" accept="image/*">
+            <button @click.prevent="clickHandler">Submit</button>
             <div v-if="spinner"><div class="dots-3"></div></div>
         </form>
         

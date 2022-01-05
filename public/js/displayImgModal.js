@@ -6,12 +6,10 @@ const displayImgModal = {
     },
     props: ["id"],
     mounted() {
-        console.log("first componend mounted");
-        console.log("this.passingAProp", this.passingAProp);
         fetch(`/get-img-by-id-data/${this.id}`)
             .then((resp) => resp.json())
             .then((data) => {
-                console.log("data", data);
+                console.log("data by id", data[0]);
                 this.image = data[0];
             });
     },
@@ -27,6 +25,7 @@ const displayImgModal = {
             <div class="modal-box">
             <div class="img-container">
             <img :src="image.url" :alt="image.description" class="inner-img-modal">
+            <p>posted: {{image.dateAdded}}</p>
             </div>
             <div class="text-container">
             <h3 class="img-title">{{image.title}}</h3>

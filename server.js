@@ -1,4 +1,5 @@
 const express = require("express");
+const moment = require("moment");
 const app = express();
 const { getImages, addImage, getImgByID } = require("./db");
 const { uploader } = require("./upload");
@@ -8,9 +9,7 @@ app.use(express.static("./public"));
 app.use(express.json());
 
 app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
-    // console.log("log body: ", req.body);
-    // console.log("log file: ", req.file);
-
+    
     if (req.file) {
         const fileName = req.file.filename;
         const urlToSaveInDB = `https://s3.amazonaws.com/spicedling/${fileName}`;
@@ -44,7 +43,8 @@ app.get("/get-imageboard-data", (req, res) => {
 
 app.get("/get-img-by-id-data/:id", (req, res) => {
     getImgByID(req.params.id).then(({ rows }) => {
-        console.log("rows in get-img-in-data:", rows);
+        let dateAdded = moment(rows[0].created_at).fromNow();
+        rows[0].dateAdded = dateAdded;
         res.json(rows);
     });
 });

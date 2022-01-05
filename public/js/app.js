@@ -26,7 +26,6 @@ Vue.createApp({
     methods: {
         clickHandler() {
             this.spinner = true;
-
             const fd = new FormData();
             fd.append("title", this.title);
             fd.append("username", this.username);
@@ -40,25 +39,22 @@ Vue.createApp({
                 .then((result) => {
                     console.log("result", result[0]);
                     this.images.unshift(result[0]);
+                    this.spinner = false;
                 })
                 .catch(console.log());
 
-            // set Values empty
             this.title = "";
             this.description = "";
             this.username = "";
             this.file = null;
         },
         fileSelectHandler(e) {
-            // console.log("event Object", e);
             this.file = e.target.files[0];
         },
         openImgModal(imageId) {
             this.imgClicked = imageId;
-            // console.log("Image ID", imageId);
         },
         closeModal() {
-            // set the renderSomething to false
             this.imgClicked = false;
         },
     },
