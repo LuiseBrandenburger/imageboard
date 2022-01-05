@@ -1,7 +1,7 @@
 import * as Vue from "./vue.js";
+import displayImgModal from "./displayImgModal.js";
 
 Vue.createApp({
-    // data ist das Daten Objekt, das entsprechend Daten speichert
     data() {
         return {
             images: [],
@@ -9,37 +9,37 @@ Vue.createApp({
             description: "",
             username: "",
             file: null,
-            spinner: false
+            spinner: false,
+            imgClicked: false,
         };
     },
     mounted() {
         fetch("/get-imageboard-data")
             .then((resp) => resp.json())
             .then((data) => {
-                console.log("data from fetch", data);
                 this.images = data;
             });
     },
+    components: {
+        "display-img-modal": displayImgModal,
+    },
     methods: {
-        clickHandler: function () {
+        clickHandler() {
             this.spinner = true;
-            // console.log("this in function", this);
 
             const fd = new FormData();
             fd.append("title", this.title);
             fd.append("username", this.username);
             fd.append("description", this.description);
             fd.append("file", this.file);
-            fetch('/upload', {
-                method: 'POST',
-                body: fd
-            }).then(res => res.json())
+            fetch("/upload", {
+                method: "POST",
+                body: fd,
+            })
+                .then((res) => res.json())
                 .then((result) => {
                     console.log("result", result[0]);
-                    // push the result into the array
-                    console.log("images before unshift", this.images);
                     this.images.unshift(result[0]);
-                    console.log("images after unshift", this.images);
                 })
                 .catch(console.log());
 
@@ -48,11 +48,17 @@ Vue.createApp({
             this.description = "";
             this.username = "";
             this.file = null;
-
         },
-        fileSelectHandler: function (e) {
-            console.log("event Object", e);
+        fileSelectHandler(e) {
+            // console.log("event Object", e);
             this.file = e.target.files[0];
+        },
+        openImgModal(e){
+            console.log("e target:", e.target);
+            console.log("the modal is open now get the key");
+        },
+        closeComponent() {
+            // set the renderSomething to false
         },
     },
 }).mount("#main");

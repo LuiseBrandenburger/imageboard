@@ -25,7 +25,6 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
         )
             .then(({ rows }) => {
                 console.log("image successfully saved in db");
-                console.log("rows", rows);
                 res.json(rows);
             })
             .catch((err) => {
