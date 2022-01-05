@@ -17,8 +17,8 @@
 
     <div id="main">
         <!-- ************************* VUE START ********************** -->
-        <display-img-modal></display-img-modal>
-
+        
+        <display-img-modal v-if="imgClicked" :id="imgClicked" @close="closeModal"></display-img-modal>
 
         <form class="input-form">
             <input v-model="title" type="text" name="title" id="" placeholder="title">
@@ -27,12 +27,10 @@
             <input @change="fileSelectHandler" type="file" name="file" id="" accept="image/*">
             <button @click.prevent="clickHandler" >Submit</button>
             <div v-if="spinner"><div class="dots-3"></div></div>
-            <!-- <div v-else="spinner"></div> -->
-
         </form>
         
         <section class="wrapper-grid">
-            <div v-for="image in images" :key="image.id" class="img-card" @click="openImgModal">
+            <div v-for="image in images" :key="image.id" class="img-card" @click="openImgModal(image.id)">
                     <img :src="image.url" :alt="image.description">
                     <p class="img-title">{{image.title}}</p>
             </div>

@@ -53,12 +53,13 @@ Vue.createApp({
             // console.log("event Object", e);
             this.file = e.target.files[0];
         },
-        openImgModal(e){
-            console.log("e target:", e.target);
-            console.log("the modal is open now get the key");
+        openImgModal(imageId) {
+            this.imgClicked = imageId;
+            // console.log("Image ID", imageId);
         },
-        closeComponent() {
+        closeModal() {
             // set the renderSomething to false
+            this.imgClicked = false;
         },
     },
 }).mount("#main");

@@ -9,7 +9,6 @@ const db = spicedPg(
         `postgres:${username}:${password}@localhost:5432/${database}`
 );
 
-
 module.exports.getImages = () => {
     const q = `SELECT * FROM images
     ORDER by id desc`;
@@ -25,3 +24,8 @@ module.exports.addImage = (description, username, title, url) => {
     return db.query(q, params);
 };
 
+module.exports.getImgByID = (id) => {
+    const q = `SELECT * FROM images WHERE id = ($1)`;
+    const params = [id];
+    return db.query(q, params);
+};

@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const { getImages, addImage } = require("./db");
+const { getImages, addImage, getImgByID } = require("./db");
 const { uploader } = require("./upload");
 const s3 = require("./s3");
 
@@ -8,10 +8,8 @@ app.use(express.static("./public"));
 app.use(express.json());
 
 app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
-    console.log("log body: ", req.body);
-    console.log("log file: ", req.file);
-    // res.send('Upload Successfull');
-    // add file URL to db
+    // console.log("log body: ", req.body);
+    // console.log("log file: ", req.file);
 
     if (req.file) {
         const fileName = req.file.filename;
@@ -40,6 +38,13 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
 
 app.get("/get-imageboard-data", (req, res) => {
     getImages().then(({ rows }) => {
+        res.json(rows);
+    });
+});
+
+app.get("/get-img-by-id-data/:id", (req, res) => {
+    getImgByID(req.params.id).then(({ rows }) => {
+        console.log("rows in get-img-in-data:", rows);
         res.json(rows);
     });
 });
