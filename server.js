@@ -7,6 +7,7 @@ const {
     getImgByID,
     addComment,
     getCommentsByID,
+    getMoreImagesByID
 } = require("./db");
 const { uploader } = require("./upload");
 const s3 = require("./s3");
@@ -53,8 +54,15 @@ app.get("/get-img-by-id-data/:id", (req, res) => {
     });
 });
 
+app.get("/get-more-images/:id", (req, res) => {
+
+    getMoreImagesByID(req.params.id).then(({ rows }) => {
+        res.json(rows);
+    });
+});
+
+
 app.get("/comments/:id", (req, res) => {
-    console.log("req.params: ", req.params);
 
     getCommentsByID(req.params.id).then(({ rows }) => {
         rows.forEach( row => {
@@ -69,7 +77,6 @@ app.post("/upload-comment", (req, res) => {
     
     addComment(req.body.username, req.body.comment, req.body.img_id)
         .then(({ rows }) => {
-            console.log("comment successfully saved in db");
             res.json(rows);
         })
         .catch((err) => {
@@ -78,7 +85,6 @@ app.post("/upload-comment", (req, res) => {
         });
 
 });
-
 
 
 app.get("*", (req, res) => {

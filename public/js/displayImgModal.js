@@ -19,7 +19,7 @@ const displayImgModal = {
     },
     methods: {
         openModal() {
-            console.log("the modal is open");
+            // console.log("the modal is open");
         },
         closeModal() {
             this.$emit("close");

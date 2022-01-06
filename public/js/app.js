@@ -1,6 +1,5 @@
 import * as Vue from "./vue.js";
 import displayImgModal from "./displayImgModal.js";
-// import commentComponent from "./commentComponent.js";
 
 Vue.createApp({
     data() {
@@ -38,7 +37,6 @@ Vue.createApp({
             })
                 .then((res) => res.json())
                 .then((result) => {
-                    console.log("result", result[0]);
                     this.images.unshift(result[0]);
                     this.spinner = false;
                 })
@@ -60,8 +58,19 @@ Vue.createApp({
         },
         showMoreImg(){
             console.log("show me more images");
-            // loop through images
-            this.images;
+            let arrOfIDs = []
+            this.images.forEach( image => {
+                arrOfIDs.push(image.id);
+            });
+            let lastID = arrOfIDs.pop();
+
+            fetch(`/get-more-images/${lastID}`)
+                .then((resp) => resp.json())
+                .then((data) => {
+                    this.images = [...this.images, ...data];
+                })
+                .catch(console.log());
+            // this.images;
 
         },
     },
