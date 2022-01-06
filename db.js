@@ -43,7 +43,8 @@ module.exports.addComment = (username, comment, img_id) => {
 
 module.exports.getCommentsByID = (img_id) => {
     const q = `SELECT * FROM comments WHERE img_id = ($1)
-    ORDER by id DESC`;
+    ORDER by id DESC
+    LIMIT 8`;
     const params = [img_id];
     return db.query(q, params);
 };

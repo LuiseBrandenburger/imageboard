@@ -30,9 +30,9 @@ body {
 form {
     display: flex;
     width: 100%;
-    border-width: 5px;
-    border-style: solid;
-    border-image: linear-gradient(to right, #ffd166c7, #ff6666bf, #66ffabc9) 1;
+    /* border-width: 5px;
+    border-style: solid; */
+    /* border-image: linear-gradient(to right, #ffd166c7, #ff6666bf, #66ffabc9) 1; */
     align-self: center;
 }
 
@@ -48,7 +48,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--main-color);
+    background: var(--gradient);
 }
 
 input {
@@ -76,9 +76,7 @@ input {
     align-items: center;
     padding-bottom: 10px;
     margin-top: 20px;
-    cursor: pointer;
-     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-    
+    cursor: pointer;    
 }
 
 .img-card:hover {
@@ -95,6 +93,7 @@ img {
 
 .img-title {
     margin-top: 20px;
+    color: rgb(255, 255, 255);
 }
 
 footer {
@@ -198,7 +197,19 @@ footer {
 }
 
 .comment-container p {
+    display: inline;
     font-size: 0.8rem;
+}
+
+.comment-container .comment-username {
+    font-weight: bold;
+}
+
+.comment-container .date-added {
+    display: block;
+    font-size: 0.6rem;
+    color: rgb(56, 56, 56);
+    margin-top: 2px;
 }
 
 #comment-form {
@@ -230,9 +241,9 @@ footer {
     background-color: transparent;
 }
 
-/* #comment-form button:hover {
-    background-color: rgb(145, 145, 145);
-} */
+#comment-form button:hover {
+    background: transparent;
+}
 
 #modal-btn {
     width: auto;
@@ -245,4 +256,8 @@ footer {
     right:15px;
     top: 5px;
     background-color: transparent;
+}
+
+#modal-btn {
+    background: transparent;
 }

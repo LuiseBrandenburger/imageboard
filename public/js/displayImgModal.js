@@ -33,7 +33,7 @@ const displayImgModal = {
                         <div class="img-content-container">
                             <div class="img-container">
                                 <img :src="image.url" :alt="image.description" class="inner-img-modal">
-                                <p>posted by {{image.username}}: {{image.dateAdded}}</p>
+                                <p>posted by {{image.username}} - {{image.dateAdded}}</p>
                             </div>
                             <div class="text-container">
                                 <h3 class="img-title">{{image.title}}</h3>
