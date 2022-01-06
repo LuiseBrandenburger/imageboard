@@ -41,7 +41,7 @@ const displayImgModal = {
                             </div>
                         </div>
 
-                        <comment-component :imageId="image.id" class="comment-container"></comment-component>
+                        <comment-component :imageId="id" class="comment-container"></comment-component>
 
                     </div>
                     <button id="modal-btn" @click="closeModal">Close</button>

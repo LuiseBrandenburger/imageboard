@@ -39,3 +39,11 @@ module.exports.addComment = (username, comment, img_id) => {
     const params = [username, comment, img_id];
     return db.query(q, params);
 };
+
+
+module.exports.getCommentsByID = (img_id) => {
+    const q = `SELECT * FROM comments WHERE img_id = ($1)
+    ORDER by id desc`;
+    const params = [img_id];
+    return db.query(q, params);
+};

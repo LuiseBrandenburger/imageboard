@@ -1,7 +1,6 @@
 import * as Vue from "./vue.js";
 import displayImgModal from "./displayImgModal.js";
-import commentComponent from "./commentComponent.js";
-
+// import commentComponent from "./commentComponent.js";
 
 Vue.createApp({
     data() {

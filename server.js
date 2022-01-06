@@ -1,7 +1,13 @@
 const express = require("express");
 const moment = require("moment");
 const app = express();
-const { getImages, addImage, getImgByID, addComment } = require("./db");
+const {
+    getImages,
+    addImage,
+    getImgByID,
+    addComment,
+    getCommentsByID,
+} = require("./db");
 const { uploader } = require("./upload");
 const s3 = require("./s3");
 
@@ -33,22 +39,6 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
     }
 });
 
-app.post("/upload-comment", (req, res) => {
-    
-    console.log("req.body:", req.body);
-
-    addComment(req.body.username, req.body.comment, req.body.img_id)
-        .then(({ rows }) => {
-            console.log("comment successfully saved in db");
-            res.json(rows);
-        })
-        .catch((err) => {
-            console.log("error adding comment into db", err);
-            res.sendStatus(500);
-        });
-
-});
-
 app.get("/get-imageboard-data", (req, res) => {
     getImages().then(({ rows }) => {
         res.json(rows);
@@ -62,6 +52,35 @@ app.get("/get-img-by-id-data/:id", (req, res) => {
         res.json(rows);
     });
 });
+
+app.get("/comments/:id", (req, res) => {
+    console.log("req.params: ", req.params);
+
+    getCommentsByID(req.params.id).then(({ rows }) => {
+        console.log("ROWS after comments where fetched:", rows);
+        // let dateAdded = moment(rows[0].created_at).fromNow();
+        // rows[0].dateAdded = dateAdded;
+        res.json(rows);
+    });
+});
+
+
+app.post("/upload-comment", (req, res) => {
+    
+    // console.log("req.body:", req.body);
+    addComment(req.body.username, req.body.comment, req.body.img_id)
+        .then(({ rows }) => {
+            console.log("comment successfully saved in db");
+            res.json(rows);
+        })
+        .catch((err) => {
+            console.log("error adding comment into db", err);
+            res.sendStatus(500);
+        });
+
+});
+
+
 
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
