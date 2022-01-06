@@ -146,8 +146,8 @@ footer {
     flex-direction: column;
     background: var(--gradient);
     background-blend-mode: screen;
-    width: 75vw;
-    height: 80vh;
+    width: 80vw;
+    height: 90vh;
     padding: 40px;
 }
 

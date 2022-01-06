@@ -57,17 +57,16 @@ app.get("/comments/:id", (req, res) => {
     console.log("req.params: ", req.params);
 
     getCommentsByID(req.params.id).then(({ rows }) => {
-        console.log("ROWS after comments where fetched:", rows);
-        // let dateAdded = moment(rows[0].created_at).fromNow();
-        // rows[0].dateAdded = dateAdded;
+        rows.forEach( row => {
+            let dateAddedComment = moment(row.created_at).fromNow();
+            row.dateAddedComment = dateAddedComment;
+        });
         res.json(rows);
     });
 });
 
-
 app.post("/upload-comment", (req, res) => {
     
-    // console.log("req.body:", req.body);
     addComment(req.body.username, req.body.comment, req.body.img_id)
         .then(({ rows }) => {
             console.log("comment successfully saved in db");

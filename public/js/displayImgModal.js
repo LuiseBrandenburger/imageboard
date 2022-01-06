@@ -11,7 +11,6 @@ const displayImgModal = {
         fetch(`/get-img-by-id-data/${this.id}`)
             .then((resp) => resp.json())
             .then((data) => {
-                console.log("data by id", data[0]);
                 this.image = data[0];
             });
     },
