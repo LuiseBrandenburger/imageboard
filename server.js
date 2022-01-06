@@ -1,7 +1,7 @@
 const express = require("express");
 const moment = require("moment");
 const app = express();
-const { getImages, addImage, getImgByID } = require("./db");
+const { getImages, addImage, getImgByID, addComment } = require("./db");
 const { uploader } = require("./upload");
 const s3 = require("./s3");
 
@@ -9,11 +9,10 @@ app.use(express.static("./public"));
 app.use(express.json());
 
 app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
-    
     if (req.file) {
         const fileName = req.file.filename;
         const urlToSaveInDB = `https://s3.amazonaws.com/spicedling/${fileName}`;
-    
+
         addImage(
             req.body.description,
             req.body.username,
@@ -32,6 +31,21 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
         // TODO: what do we do if success is false??
         res.json({ success: false });
     }
+});
+
+app.post("/upload-comment", (req, res) => {
+    
+    console.log("req.body:", req.body);
+
+    addComment(req.body.username, req.body.comment, req.body.img_id)
+        .then(({ rows }) => {
+            console.log("comment successfully saved in db");
+            res.json(rows);
+        })
+        .catch((err) => {
+            console.log("error adding comment into db", err);
+            res.sendStatus(500);
+        });
 
 });
 

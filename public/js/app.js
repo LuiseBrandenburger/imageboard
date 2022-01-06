@@ -1,5 +1,7 @@
 import * as Vue from "./vue.js";
 import displayImgModal from "./displayImgModal.js";
+import commentComponent from "./commentComponent.js";
+
 
 Vue.createApp({
     data() {
@@ -56,6 +58,12 @@ Vue.createApp({
         },
         closeModal() {
             this.imgClicked = false;
+        },
+        showMoreImg(){
+            console.log("show me more images");
+            // loop through images
+            this.images;
+
         },
     },
 }).mount("#main");

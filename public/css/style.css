@@ -56,7 +56,6 @@ input {
     margin: 10px 20px;
     padding: 2px;
     font-family: var(--main-font);
-
 }
 
 .wrapper-grid {
@@ -78,6 +77,7 @@ input {
     padding-bottom: 10px;
     margin-top: 20px;
     cursor: pointer;
+     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     
 }
 
@@ -146,9 +146,18 @@ footer {
     flex-direction: column;
     background: var(--gradient);
     background-blend-mode: screen;
-    width: 60vw;
+    width: 75vw;
     height: 80vh;
     padding: 40px;
+}
+
+.modal-content-container {
+    display: flex;
+}
+
+.img-content-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .img-container {
@@ -163,15 +172,31 @@ footer {
     max-height: 100%;
 }
 
-.text-container {
+.text-container, .comment-container{
     width: 90%;
     align-self: center;
+    margin-bottom: 20px;
 }
 
 .text-container h3 {
     margin-bottom: 10px;
 }
 
+.comment-container {
+    width: 30vw;
+    padding-left: 20px;
+}
+
+#comment-form {
+    display: flex;
+    flex-direction: column;
+    border: none;
+}
+
 #modal-btn:hover {
     background-color: rgb(145, 145, 145);
+}
+
+.more-btn {
+
 }
