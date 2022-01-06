@@ -11,6 +11,7 @@ Vue.createApp({
             file: null,
             spinner: false,
             imgClicked: false,
+            displayBtn: true
         };
     },
     mounted() {
@@ -58,7 +59,7 @@ Vue.createApp({
         },
         showMoreImg(){
             console.log("show me more images");
-            let arrOfIDs = []
+            let arrOfIDs = [];
             this.images.forEach( image => {
                 arrOfIDs.push(image.id);
             });
@@ -67,11 +68,16 @@ Vue.createApp({
             fetch(`/get-more-images/${lastID}`)
                 .then((resp) => resp.json())
                 .then((data) => {
+                    data.forEach(element => {
+                        if (element.id > element.lowestId) {
+                            this.displayBtn = true;
+                        } else {
+                            this.displayBtn = false;
+                        }
+                    });
                     this.images = [...this.images, ...data];
                 })
                 .catch(console.log());
-            // this.images;
-
         },
     },
 }).mount("#main");

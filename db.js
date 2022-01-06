@@ -59,3 +59,5 @@ module.exports.getMoreImagesByID = (id) => {
     const params = [id];
     return db.query(q, params);
 };
+
+
