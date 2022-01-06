@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <h1 id="page-title">THE WORLD OF ROGER DEAN</h1>
+    <h1 id="page-title">THE WORLD OF ROGER DEAN - IMAGEBOARD</h1>
     
     <div id="main">
         <!-- ************************* VUE START ********************** -->
@@ -19,9 +19,9 @@
         <display-img-modal v-if="imgClicked" :id="imgClicked" @close="closeModal"></display-img-modal>
         
         <form class="input-form">
-            <input v-model="title" type="text" name="title" id="" placeholder="title">
-            <input v-model="username" type="text" name="username" id="" placeholder="username">
-            <input v-model="description" type="text" name="description" id="" placeholder="description">
+            <input v-model="title" type="text" name="title" id="" placeholder="Title">
+            <input v-model="username" type="text" name="username" id="" placeholder="User name">
+            <input v-model="description" type="text" name="description" id="" placeholder="Image Description">
             <label for="file"></label>
             <input @change="fileSelectHandler" type="file" name="file" id="file" accept="image/*">
             <button @click.prevent="clickHandler">Submit</button>

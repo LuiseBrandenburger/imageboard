@@ -26,8 +26,9 @@ const displayImgModal = {
         },
     },
     template: `<div class="modal-container">
-                
+                <button id="modal-btn" @click="closeModal">x</button>
                 <div class="modal-box">
+
                     <div class="modal-content-container">
                         <div class="img-content-container">
                             <div class="img-container">
@@ -41,10 +42,7 @@ const displayImgModal = {
                         </div>
 
                         <comment-component :imageId="id" class="comment-container"></comment-component>
-
                     </div>
-                    <button id="modal-btn" @click="closeModal">Close</button>
-
                 </div>
         </div>`,
 };

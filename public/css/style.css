@@ -147,12 +147,13 @@ footer {
     background: var(--gradient);
     background-blend-mode: screen;
     width: 80vw;
-    height: 90vh;
+    height: 75vh;
     padding: 40px;
 }
 
 .modal-content-container {
     display: flex;
+    height: 90%;
 }
 
 .img-content-container {
@@ -164,6 +165,10 @@ footer {
     height: 400px;
     width: 100%;
     text-align: center;
+}
+
+.img-container p {
+    font-size: 0.8rem;
 }
 
 .inner-img-modal {
@@ -183,20 +188,61 @@ footer {
 }
 
 .comment-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-self: flex-end;
+    height: 400px;
     width: 30vw;
     padding-left: 20px;
+}
+
+.comment-container p {
+    font-size: 0.8rem;
 }
 
 #comment-form {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    align-items: center;
     border: none;
+    margin: 0;
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.251);
+    color: black;
+    /* border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(to right, #ffd166c7, #ff6666bf, #66ffabc9) 1; */
 }
 
-#modal-btn:hover {
+#comment-form input{
+    margin: 0;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+#comment-form button{
+    margin: 0;
+    width: 25%;
+    background-color: transparent;
+}
+
+/* #comment-form button:hover {
     background-color: rgb(145, 145, 145);
-}
-
-/* .more-btn {
-
 } */
+
+#modal-btn {
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    right:15px;
+    top: 5px;
+    background-color: transparent;
+}
