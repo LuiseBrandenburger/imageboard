@@ -5,6 +5,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="/css/style.css">
 
     <title></title>
@@ -22,7 +23,7 @@
             <input v-model="title" type="text" name="title" id="" placeholder="Title">
             <input v-model="username" type="text" name="username" id="" placeholder="User name">
             <input v-model="description" type="text" name="description" id="" placeholder="Image Description">
-            <label for="file"></label>
+            <label for="file" class="file-label"><i class="fas fa-cloud-upload-alt"></i></label>
             <input @change="fileSelectHandler" type="file" name="file" id="file" accept="image/*">
             <button @click.prevent="clickHandler">Submit</button>
             <div v-if="spinner"><div class="dots-3"></div></div>

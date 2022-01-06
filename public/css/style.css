@@ -58,6 +58,24 @@ input {
     font-family: var(--main-font);
 }
 
+#file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.file-label {
+    /* width: 50px; */
+    font-size: 2rem;
+    align-self: center;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+}
+
 .wrapper-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
