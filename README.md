@@ -1,19 +1,35 @@
-# imageboard
+
+# Imageboard
+A platform where users can post and comment on images.
+
+![gfy-landingpage](https://github.com/LuiseBrandenburger/go-fund-yourself/blob/master/client/public/gfy-landingpage.png)
+
+## Overview
+This project was built as my first Vue project during my enrollment at the Spiced Academy Bootcamp. So far, the project consists of some very basic features. With this app you can upload images (preferably of the great artist Roger Dean) and comment on existing images.
+
+## Motivation
+I created this project to get to know Vue.js and getting to know state and data flow in a full stack project.
+
+## Tech
+This Project was built with Vue.js, Node.js/Express and PostgreSQL.
+Other Libraries I used:
+- cookie session
+- moment
+- aws, s3
 
 
 ## Features
-- upload files (images)
-- aws simple cloud storage (s3) is used to store the uploaded pictures
-- add a title, a username and a description to the images
-- error handeling for mandatory fields
-- feedback message shown for succefully uploaded images
-- view a board of all the images users have added to the board
-- open a overlay component which shows the full picture, title, description, username and date of uploading
-- comment on uploaded pictures
-- close the overlay component
-- routing for revisiting image urls (browser history API)
-- individual favicon, icons and background graphics
-- hover effects and filters
-- scrolling of components
-- loading more pictures from the data base (pagination)
-- linked elements within the footer to another project
+- Users can upload files (images)
+- Users can add title, description when posting the image
+- moments is used to render the timestamp to the comments and image post
+- Users can view and add comment on single images
+
+![gfy-screenshot-finance-plan](https://github.com/LuiseBrandenburger/go-fund-yourself/blob/master/client/public/gfy-screenshot-finance-plan.png)
+
+## Future Features
+Features I would like to add in the future are:
+- infinite scroll
+- delete images
+
+## TO DO'S
+- testing
