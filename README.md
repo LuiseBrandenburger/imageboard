@@ -1,4 +1,3 @@
-
 # Imageboard
 A platform where users can post and comment on images.
 
