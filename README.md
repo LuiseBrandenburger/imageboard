@@ -2,7 +2,7 @@
 # Imageboard
 A platform where users can post and comment on images.
 
-![gfy-landingpage](https://github.com/LuiseBrandenburger/go-fund-yourself/blob/master/client/public/gfy-landingpage.png)
+![gfy-landingpage](https://github.com/LuiseBrandenburger/portfolio-next/blob/main/public/content/imageboard.JPG)
 
 ## Overview
 This project was built as my first Vue project during my enrollment at the Spiced Academy Bootcamp. So far, the project consists of some very basic features. With this app you can upload images (preferably of the great artist Roger Dean) and comment on existing images.
@@ -24,7 +24,7 @@ Other Libraries I used:
 - moments is used to render the timestamp to the comments and image post
 - Users can view and add comment on single images
 
-![gfy-screenshot-finance-plan](https://github.com/LuiseBrandenburger/go-fund-yourself/blob/master/client/public/gfy-screenshot-finance-plan.png)
+![gfy-screenshot-finance-plan](https://github.com/LuiseBrandenburger/portfolio-next/blob/main/public/content/imageboard.gif)
 
 ## Future Features
 Features I would like to add in the future are:
